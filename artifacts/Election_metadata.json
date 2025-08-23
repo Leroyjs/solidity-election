@@ -6,9 +6,115 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							}
+						],
+						"internalType": "struct Election.President[]",
+						"name": "_initialPresidents",
+						"type": "tuple[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_maxVotes",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_electionTime",
+						"type": "uint256"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "ElectionWasStoppedByOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_maxIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "IndexDoesNotExist",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_maxVotes",
+						"type": "uint256"
+					}
+				],
+				"name": "MaximumNumberOfVotesReached",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "OnlyOwnerCanControlState",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "OwnerCanNotVote",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_electionCompletionTime",
+						"type": "uint256"
+					}
+				],
+				"name": "TimeIsUp",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "YouHaveAlreadyVoted",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "_voterAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_totalVotes",
+						"type": "uint256"
+					}
+				],
+				"name": "VoteIsOk",
+				"type": "event"
 			},
 			{
 				"inputs": [
@@ -29,8 +135,34 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_additionalTime",
+						"type": "uint256"
+					}
+				],
+				"name": "addVotingTime",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
-				"name": "getPresidents",
+				"name": "getLeaderIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPresidentsInfoString",
 				"outputs": [
 					{
 						"internalType": "string",
@@ -55,6 +187,45 @@
 						"internalType": "string",
 						"name": "",
 						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "maxVotes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bool",
+						"name": "_isActiveVoting",
+						"type": "bool"
+					}
+				],
+				"name": "setStateOfVoting",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalVotes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -142,11 +313,11 @@
 			]
 		},
 		"vote.sol": {
-			"keccak256": "0xcba41fdb8ba6997165ce1ecf564d088151fb858332bd41abc0354c4480cd936e",
+			"keccak256": "0x7c5b390a42935ed7d5379a8f5e76a4fd972b774b8407266054f61d5f2fae1444",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://316926a90f510a389d6e3a14e134ca745cb612baa0c4822ec545a5836bbb9a9a",
-				"dweb:/ipfs/QmYR6XAzsHj6tbRLMzV3T5nvaPikKkDmCKQgaNvvbXRXX2"
+				"bzz-raw://f808ca0a8253eba88b259b5ec8fdbe6bddfdf5dc78d3ec20e04eb599bb13d635",
+				"dweb:/ipfs/QmXdVBGudx2gspmSZsF3EARCnD6wPfnhKHi3GT4qkefj7k"
 			]
 		}
 	},
